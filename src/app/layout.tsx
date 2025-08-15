@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Effortlessly Query and Analyze Data | Interactive SQL Playground for Analysts | DataLenz",
   description:
     "Unlock the power of data with our interactive SQL playground. Designed for data analysts, easily run queries, explore large datasets, and gain actionable insights through fast, responsive visualizations and intuitive tools.",
-  metadataBase: new URL("https://data-lens.example"),
+  metadataBase: new URL("https://data-lenz.vercel.app/"),
   openGraph: {
     title:
       "Effortlessly Query and Analyze Data | Interactive SQL Playground for Analysts | DataLenz",
