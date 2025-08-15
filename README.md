@@ -1,7 +1,9 @@
 # DataLenz
 
 **Live App** → [https://data-lenz.vercel.app/](https://data-lenz.vercel.app/)  
-**Video Demo** → _[Coming Soon]_
+
+**Video Demo** → [https://www.loom.com/share/d34625f5a8ae4da69f0600bc8ca22bab?sid=af6b5134-0728-4dfb-9d47-781e1b950e57](https://www.loom.com/share/d34625f5a8ae4da69f0600bc8ca22bab?sid=af6b5134-0728-4dfb-9d47-781e1b950e57)
+
 
 **DataLenz** is a high-performance data exploration interface built with **Next.js 15.4.6**, deployed on **Vercel** for global, fast, and secure delivery.  
 It enables developers, analysts, and technical teams to query, visualize, and interact with data directly in the browser.
