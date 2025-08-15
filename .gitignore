@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+.idea/
+.vscode/
+.history/
+*.swp
 
 # debug
 npm-debug.log*
@@ -33,9 +37,21 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# macOS
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next image cache
+**/public/**/*.cache

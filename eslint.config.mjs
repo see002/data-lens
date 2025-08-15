@@ -1,40 +1,60 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import nextPlugin from "@next/eslint-plugin-next";
 import importPlugin from "eslint-plugin-import";
 import reactPlugin from "eslint-plugin-react";
+import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import prettier from "eslint-config-prettier";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
+export default [
   {
     ignores: ["**/.next/**", "**/out/**", "**/build/**"],
   },
-  ...compat.extends(
-    "next",
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
-    "prettier",
-  ),
   {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 2023,
+        sourceType: "module",
+        ecmaFeatures: { jsx: true },
+      },
+    },
     plugins: {
+      "@typescript-eslint": tsPlugin,
+      "@next/next": nextPlugin,
       import: importPlugin,
-      "unused-imports": unusedImportsPlugin,
       react: reactPlugin,
+      "jsx-a11y": jsxA11yPlugin,
+      "unused-imports": unusedImportsPlugin,
+    },
+    settings: {
+      react: { version: "detect" },
+      "import/resolver": {
+        typescript: { alwaysTryTypes: true },
+      },
     },
     rules: {
-      // Remove unused imports entirely
-      "unused-imports/no-unused-imports": "error",
+      // Next.js recommended rules
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
 
-      // Order imports and keep them alphabetized within groups
+      // TypeScript
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+
+      // React
+      "react/jsx-key": ["error", { checkFragmentShorthand: true }],
+      "react/self-closing-comp": "warn",
+
+      // A11y
+      "jsx-a11y/alt-text": "warn",
+
+      // Imports
+      "unused-imports/no-unused-imports": "error",
       "import/order": [
         "error",
         {
@@ -49,13 +69,12 @@ const eslintConfig = [
           ],
           alphabetize: { order: "asc", caseInsensitive: true },
           "newlines-between": "always",
+          pathGroups: [{ pattern: "@/**", group: "internal", position: "before" }],
+          pathGroupsExcludedImportTypes: ["builtin"],
         },
       ],
-
-      // Ensure keys on array elements in JSX
-      "react/jsx-key": ["error", { checkFragmentShorthand: true }],
     },
   },
+  // Disable rules that conflict with Prettier formatting
+  prettier,
 ];
-
-export default eslintConfig;
