@@ -65,6 +65,7 @@ Load time was measured using:
 - Cumulative Layout Shift (CLS): `0`
 - Total Blocking Time (TBT): `0ms`
 
+![Core Web Vitals Score](public/cwv-score.png)
 https://pagespeed.web.dev/analysis/https-data-lenz-vercel-app/gfuj6gdr0g?form_factor=mobile
 
 ---
