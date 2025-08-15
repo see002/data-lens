@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "env": {},
+  "headers": [
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    }
+  ],
+  "regions": ["bom1"],
+  "github": {
+    "silent": true
+  }
+}

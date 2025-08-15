@@ -1,0 +1,60 @@
+.container {
+  height: 406px;
+  overflow: auto;
+  position: relative;
+  background: var(--background);
+}
+
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--background);
+}
+
+.row {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  width: max-content;
+  box-shadow: inset -1px 0 0 var(--border);
+}
+
+.cell {
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerCell {
+  font-weight: 600;
+  position: relative;
+}
+
+.hoverRow:hover {
+  background: var(--muted);
+}
+
+.cellHover:hover {
+  background: var(--border);
+}
+
+.resizeHandle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.stickyIndex {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: var(--background);
+  box-shadow: inset -1px 0 0 var(--border);
+}
