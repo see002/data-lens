@@ -1,52 +1,118 @@
-This is a [Next.js](https://nextjs.org) project.
+# DataLenz
 
-## Getting Started
+**Live App** → [https://data-lenz.vercel.app/](https://data-lenz.vercel.app/)  
+**Video Demo** → _[Coming Soon]_
 
-First, run the development server:
+**DataLenz** is a high-performance data exploration interface built with **Next.js 15.4.6**, deployed on **Vercel** for global, fast, and secure delivery.  
+It enables developers, analysts, and technical teams to query, visualize, and interact with data directly in the browser.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Walkthrough
+
+### Core Features
+
+- **Data Tables & Virtualized Lists** — Built with `@tanstack/react-table` and virtual scrolling for rendering large datasets efficiently.
+- **Robust Pagination** — Handles large datasets efficiently with server/client-side pagination.
+- **Advanced Filtering** — Multiple filters with instant updates.
+- **Column Picker** — Show/hide specific columns dynamically.
+- **Save Queries** — Users can store and re-run frequently used queries.
+- **Async Data Fetching & Caching** — Managed via `@tanstack/react-query` to handle loading, error states, and background updates gracefully.
+- **Dynamic Theming** — Implemented with `next-themes` and Radix UI primitives for a11y-compliant, accessible design.
+- **State Management** — Global and component-level state handled via [zustand](https://github.com/pmndrs/zustand) for simplicity and performance.
+- **Interactive Code Editing** — Powered by [Monaco Editor](https://github.com/suren-atoyan/monaco-react) for syntax highlighting, auto-completion, and a smooth editing experience.
+- **Optimized Performance** — Lighthouse LCP ~1.7s (mobile), CLS `0`, TBT `0ms`.
+
+### User Benefits
+
+- **Speed** — Optimized rendering and data fetching for minimal wait times.
+- **Clarity** — A clean, consistent interface that is easy to navigate.
+- **Accessibility** — Built with WCAG and keyboard navigation in mind.
+
+---
+
+## 🛠 JavaScript Framework & Major Packages
+
+- **Framework**: [Next.js 15.4.6](https://nextjs.org/) — Hybrid rendering (SSR/SSG), built-in routing, image optimization, and performance tooling.
+- **Core Libraries**:
+  - React 19.1.0
+  - Tailwind CSS 4.x
+  - @tanstack/react-query
+  - @tanstack/react-table
+  - @monaco-editor/react
+  - zustand
+  - Radix UI components (`@radix-ui/react-*`)
+  - next-themes
+- **Developer Tooling**:
+  - TypeScript (strict mode)
+  - ESLint + Prettier (with `prettier-plugin-tailwindcss`)
+  - Husky + lint-staged (pre-commit checks)
+
+---
+
+## ⏱ Page Load Time & Measurement
+
+**Measurement Methodology**  
+Load time was measured using:
+
+- **Lighthouse** in Chrome DevTools
+- **Web Vitals** metrics (Largest Contentful Paint, First Input Delay, Cumulative Layout Shift)
+
+**Results (Mobile)**
+
+- First Contentful Paint (FCP): `~0.9s`
+- Largest Contentful Paint (LCP): `~1.7s`
+- Cumulative Layout Shift (CLS): `0`
+- Total Blocking Time (TBT): `0ms`
+
+https://pagespeed.web.dev/analysis/https-data-lenz-vercel-app/gfuj6gdr0g?form_factor=mobile
+
+---
+
+## ⚡ Performance Optimisations
+
+- **Next.js Built-in Optimisations**
+  - React Strict Mode
+  - SWC-based JS/TS minification
+  - Automatic image optimization
+- **Experimental Next.js Features**
+  - `optimizePackageImports` for tree-shaking unused imports
+  - `cssChunking` for reducing render-blocking CSS
+- **Asset Caching**
+  - Vercel CDN caching for `_next/static` assets with long-term `Cache-Control` headers
+- **Security Headers**
+  - Strict CSP, X-Content-Type-Options, and other browser performance/security headers
+- **Code Splitting & Lazy Loading**
+  - Feature-based dynamic imports to load heavy UI components on demand
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js v20.x or later
+- npm, yarn, or pnpm
+
+### Installation
+
+```sh
+git clone https://github.com/see002/data-lens.git
+cd data-lens
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm dev
+```
 
-This project uses TailwindCSS and React Query.
+Runs the app at `http://localhost:3000`
 
-## Project Scripts
+### Build
 
-- `pnpm precheck`: runs lint, type-check, and tests
-- `pnpm build`: builds the production bundle
-- `pnpm start`: starts the production server
-- `pnpm format`: checks formatting
-- `pnpm format:write`: formats files
-- `pnpm lint`: runs ESLint
-- `pnpm type-check`: runs TypeScript type checks
-
-## Pre-commit
-
-Husky and lint-staged run ESLint and Prettier on staged files and run TypeScript type-checks before commit.
-
-## Environment Variables
-
-Copy `.env.example` to `.env.local` and fill in required values. Public variables must be prefixed with `NEXT_PUBLIC_`.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-Connect this repository to Vercel and deploy. The project is configured for `reactStrictMode`, SWC minification, and standard security headers. No custom build settings are required.
+```sh
+pnpm build
+pnpm start
+```
